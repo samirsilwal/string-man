@@ -1,0 +1,22 @@
+name: 'Manipulate string inputs'
+description: 'A GitHub Action to manipulate string inputs with different functions'
+author: 'Samir Silwal'
+
+inputs:
+  input:
+    description: 'A string input'
+    required: true
+
+  func:
+    description: 'A function to run on the input string.'
+    required: false
+    default: 'identity'
+
+outputs:
+  value:
+    description: 'The value returned by the function operation'
+
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

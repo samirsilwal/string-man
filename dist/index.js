@@ -27548,6 +27548,9 @@ try {
 
   function manipulateString(operator, ...params) {
     switch (operator) {
+      case 'equals':
+        return params[0] === params[1];
+
       case 'identity':
         return params[0];
 

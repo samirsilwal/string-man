@@ -5,9 +5,17 @@ on:
       value:
         description: 'String input'
         required: true
+      
+      operation:
+        description: 'Operation to perform on the input string'
+        required: false
+      
+      params:
+        description: 'Parameters for the function.(Comma separated values)'
+        required: false
 
 jobs:
-  parse-input:
+  manipulate-input:
     runs-on: ubuntu-latest
     name: 
     
@@ -25,6 +33,8 @@ jobs:
         uses: ./
         with:
           input: ${{ github.event.inputs.value }}
+          func: ${{ github.event.inputs.operation }}
+          params: ${{ github.event.inputs.params }}
       
       - name: Print the output value
-        run: echo "Parsed value is ${{ steps.parse.outputs.value }}"
+        run: echo "Output value is ${{ steps.parse.outputs.value }}"

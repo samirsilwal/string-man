@@ -12,10 +12,14 @@ inputs:
     required: false
     default: 'identity'
 
+  params:
+    description: 'Parameters for the function'
+    required: false
+    default: ''
+
 outputs:
   value:
     description: 'The value returned by the function operation'
-
 
 runs:
   using: 'node20'

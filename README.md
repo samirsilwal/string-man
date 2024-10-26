@@ -60,6 +60,34 @@ Below is a list of supported string manipulation functions with their descriptio
 | `repeat`           | Repeats the string a specified number of times.                         |
 | `localeCompare`    | Compares two strings in the current locale.                             |
 
+### JSON-Based Chained String Operations
+
+`func` input also support for JSON input to define multiple string operations and their respective parameters, enabling chaining of operations in a single action.
+
+#### Usage
+
+Instead of passing a single operator, you can now pass a JSON array to define multiple operators and their parameters. The `operator` parameter should be a valid JSON string representing an array of arrays, where each inner array contains an operation name followed by its corresponding arguments.
+
+#### JSON Format
+
+The JSON format should be as follows:
+
+```json
+[
+  ["operator1", "param1", "param2", ...],
+  ["operator2", "param1", "param2", ...],
+  ...
+]
+```
+### Example
+
+```json
+[
+  ["replace", "hello", "gg"],
+  ["includes", "gg"]
+]
+```
+
 ## Usage
 
 Below is an example of how to use this GitHub Action in your workflow:

@@ -56,12 +56,14 @@ try {
       core.info(`Applying operator: ${op}`);
       const strOutput = manipulateString(op, finalOutput, ...operatorInfo.slice(1));
 
-      if (typeof strOutput !== 'string') {
-        break;
-      }
       core.info(`intermediate output: ${strOutput}`);
 
       finalOutput = strOutput;
+
+      if (typeof strOutput !== 'string') {
+
+        break;
+      }
     }
 
     output = finalOutput;

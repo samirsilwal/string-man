@@ -27541,6 +27541,16 @@ module.exports = parseParams
 var __webpack_exports__ = {};
 const core = __nccwpck_require__(7484);
 
+function isValidJSON(str) {
+  try {
+    const parsed = JSON.parse(str);
+
+    return !!Array.isArray(parsed);
+  } catch (e) {
+    return false;
+  }
+}
+
 try {
   const inputString = core.getInput('input');
   const operator = core.getInput('func');
@@ -27550,6 +27560,7 @@ try {
     // For instance methods
     if (typeof String.prototype[operator] === 'function') {
       const targetString = params[0];
+
       return String.prototype[operator].apply(targetString, params.slice(1));
     }
 
@@ -27572,7 +27583,33 @@ try {
     }
   }
 
-  const output = manipulateString(operator, inputString, ...params);
+  let output = '';
+
+  if (isValidJSON(operator)) {
+    core.info('Parsing operator as JSON');
+    const operatorObj = JSON.parse(operator);
+
+    let finalOutput = inputString;
+
+    for (const operatorInfo of operatorObj) {
+      const op = operatorInfo[0];
+
+      core.info(`Applying operator: ${op}`);
+      const strOutput = manipulateString(op, finalOutput, ...operatorInfo.slice(1));
+
+      if (typeof strOutput !== 'string') {
+        break;
+      }
+      core.info(`intermediate output: ${strOutput}`);
+
+      finalOutput = strOutput;
+    }
+
+    output = finalOutput;
+
+  } else {
+    output = manipulateString(operator, inputString, ...params);
+  }
 
   core.setOutput('value', output);
 } catch (error) {

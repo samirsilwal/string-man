@@ -4,7 +4,8 @@
   "description": "Manipulate strings in github actions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "build": "ncc build index.js -o dist"
   },
   "keywords": [],
@@ -13,5 +14,8 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@vercel/ncc": "^0.38.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }

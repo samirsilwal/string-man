@@ -12,7 +12,6 @@ function isValidJSON(str) {
 
     return !!Array.isArray(parsed);
   } catch (e) {
-    console.log(e);
     return false;
   }
 }

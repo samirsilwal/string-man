@@ -124,3 +124,8 @@ OR
       - name: Print the output value
         run: echo "Output value is ${{ steps.operate.outputs.value }}"
 ```
+# Contributors
+
+<a href="https://github.com/samirsilwal/string-man/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=samirsilwal/string-man" />
+</a>

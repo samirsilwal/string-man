@@ -1,7 +1,5 @@
-const core = require("@actions/core");
-const { isValidJSON, manipulateString, main } = require("../../index"); // Adjust the import path
+const {  manipulateString } = require("../../index"); // Adjust the import path
 
-jest.mock("@actions/core");
 
 describe("manipulateString", () => {
   it('should handle "concat" operator correctly', () => {
